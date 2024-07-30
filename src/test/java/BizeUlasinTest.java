@@ -56,13 +56,11 @@ public class BizeUlasinTest {
 
         WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit'], input[type='submit']"));
         submitButton.click();
-
         /*
         WebElement successMessage = driver.findElement(By.id("successMessageId"));
         assertNotNull(successMessage);
         assertEquals("Mesajınız başarıyla gönderildi", successMessage.getText());*/
     }
-
     @AfterEach
     public void tearDown() {
         if (driver != null) {
