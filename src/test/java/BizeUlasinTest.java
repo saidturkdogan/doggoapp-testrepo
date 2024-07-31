@@ -3,6 +3,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,14 +17,23 @@ public class BizeUlasinTest {
 
     @BeforeEach
     public void setUp() {
-        System.out.println("Chrome sürümü: " + WebDriverManager.chromedriver().getDownloadedDriverVersion());
-        WebDriverManager.chromedriver().browserVersion("114.0.5735.199").setup();
+
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\PC\\Desktop\\chromedriver-win64\\chromedriver.exe");
+
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
+
+
         driver = new ChromeDriver(options);
-        System.out.println("ChromeDriver başarıyla başlatıldı.");
+
+
+        String browserVersion = (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
+        System.out.println("Tarayıcı sürümü: " + browserVersion);
+
+
         driver.get("https://devweb.doggoapp.com/");
     }
 
