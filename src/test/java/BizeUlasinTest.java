@@ -27,10 +27,8 @@ public class BizeUlasinTest {
 
         driver = new ChromeDriver(options);
 
-
         String browserVersion = (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
         System.out.println("Tarayıcı sürümü: " + browserVersion);
-
 
         driver.get("https://devweb.doggoapp.com/");
     }
