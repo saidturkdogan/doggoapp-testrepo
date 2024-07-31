@@ -20,12 +20,10 @@ public class BizeUlasinTest {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\PC\\Desktop\\chromedriver-win64\\chromedriver.exe");
 
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
-
 
         driver = new ChromeDriver(options);
 
