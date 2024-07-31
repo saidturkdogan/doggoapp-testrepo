@@ -16,8 +16,8 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        distribution: 'temurin' # AdoptOpenJDK Temurin (Recommended)
-        java-version: '21'      # Versiyonunuzu burada belirtin
+        distribution: 'temurin'
+        java-version: '11'
 
     - name: Cache Maven packages
       uses: actions/cache@v3
@@ -26,7 +26,15 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+   
+    - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.9.5
 
+    - name: Clean Maven packages
+      run: mvn dependency:purge-local-repository
+  
     - name: Install dependencies and run tests
       run: mvn clean install
 
