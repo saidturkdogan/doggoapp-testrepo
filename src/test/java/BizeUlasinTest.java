@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,8 +16,14 @@ public class BizeUlasinTest {
 
     @BeforeEach
     public void setUp() {
-        WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
+        System.out.println("Chrome sürümü: " + WebDriverManager.chromedriver().getDownloadedDriverVersion());
+        WebDriverManager.chromedriver().browserVersion("114.0.5735.199").setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        driver = new ChromeDriver(options);
+        System.out.println("ChromeDriver başarıyla başlatıldı.");
         driver.get("https://devweb.doggoapp.com/");
     }
 

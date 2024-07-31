@@ -45,6 +45,12 @@
             <artifactId>logback-classic</artifactId>
             <version>1.4.11</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.qeagle</groupId>
+            <artifactId>DevTools-Selenium</artifactId>
+            <version>1.2.1</version>
+        </dependency>
     </dependencies>
 
 </project>
