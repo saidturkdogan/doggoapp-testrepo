@@ -16,8 +16,15 @@ jobs:
           java-version: '21'
           distribution: 'zulu'  # veya 'adoptopenjdk'
 
+      - name: Install Maven
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'zulu'  # veya 'adoptopenjdk'
+          maven-version: '3.8.6'  # Maven sürümünü güncel sürümle değiştirin
+
       - name: Install dependencies
-        run: ./mvnw install
+        run: mvn install
 
       - name: Install Google Chrome
         run: |
@@ -36,4 +43,4 @@ jobs:
           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Run tests
-        run: ./mvnw test
+        run: mvn test
