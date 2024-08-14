@@ -55,7 +55,6 @@ public class BizeUlasin {
 
 
 
-
             WebElement dropdownKonu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/main/div/div/section[8]/div/div[2]/form/div/div[3]/div[2]/button/div")));
 
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownKonu);
