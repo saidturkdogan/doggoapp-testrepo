@@ -27,10 +27,10 @@ public class BizeUlasin {
     @Test
     public void testBizeUlasin() {
         try {
-            // Sayfayı aşağı kaydır
+
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
-            // Engelleyen elementi bul ve kaldır (eğer varsa)
+
             try {
                 WebElement blocker = driver.findElement(By.cssSelector(".fixed.bottom-0.left-0.right-0"));
                 ((JavascriptExecutor) driver).executeScript("arguments[0].remove();", blocker);
@@ -39,24 +39,56 @@ public class BizeUlasin {
                 System.out.println("Engelleyen element bulunamadı.");
             }
 
-            // Dropdown'ı bul
-            WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-slot='innerWrapper']")));
 
-            // JavaScript ile tıkla
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);
+            WebElement dropdownGonderen = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-slot='innerWrapper']")));
+
+
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownGonderen);
             System.out.println("Dropdown tıklandı.");
 
-            // Dropdown'un görünür ve tıklanabilir olmasını bekleyin
-            dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Müşteri']")));
 
-// Span elementini tıklayın
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);
+            dropdownGonderen = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Müşteri']")));
+
+
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownGonderen);
             System.out.println("'Müşteri' seçeneği seçildi.");
 
-            // Seçimin doğruluğunu kontrol et
+
+
+
+            WebElement dropdownKonu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/main/div/div/section[8]/div/div[2]/form/div/div[3]/div[2]/button/div")));
+
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownKonu);
+            System.out.println("Dropdown tıklandı.");
+
+            dropdownKonu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Gezdirme Hizmeti Hakkında']")));
+
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownKonu);
+            System.out.println("'Gezdirme Hizmeti Hakkında' seçeneği seçildi.");
+
+
+
+
+            WebElement dropdownProvince = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/main/div/div/section[8]/div/div[2]/form/div/div[5]/div[2]/button/div")));
+
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownProvince);
+            System.out.println("Dropdown tıklandı.");
+
+            dropdownProvince = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='İstanbul']")));
+
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdownProvince);
+            System.out.println("'İstanbul' seçeneği seçildi.");
+
+
+
+
+
+
+
             WebElement selectedValue = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-slot='innerWrapper']//span[@data-slot='value']")));
             Assertions.assertEquals("Müşteri", selectedValue.getText());
             System.out.println("Seçim doğrulandı: " + selectedValue.getText());
+
 
         } catch (TimeoutException e) {
             System.out.println("Zaman aşımı hatası: " + e.getMessage());
