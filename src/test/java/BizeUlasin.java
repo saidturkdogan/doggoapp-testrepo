@@ -40,6 +40,10 @@ public class BizeUlasin {
             }
 
 
+            WebElement input_element = driver.findElement(By.name("fullName"));
+            input_element.sendKeys("John Doe");
+
+
             WebElement dropdownGonderen = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-slot='innerWrapper']")));
 
 
@@ -66,6 +70,14 @@ public class BizeUlasin {
             System.out.println("'Gezdirme Hizmeti Hakkında' seçeneği seçildi.");
 
 
+            WebElement email = driver.findElement(By.xpath("/html/body/div/main/div/div/section[8]/div/div[2]/form/div/div[4]/div[1]/div/div/div/input"));
+            email.sendKeys("asd@gmail.com");
+
+            WebElement input_phone = driver.findElement(By.name("phone"));
+            input_phone.sendKeys("5397240935");
+
+            WebElement input_message = driver.findElement(By.name("message"));
+            input_message.sendKeys("deneme mesajı");
 
 
             WebElement dropdownProvince = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/main/div/div/section[8]/div/div[2]/form/div/div[5]/div[2]/button/div")));
@@ -80,14 +92,13 @@ public class BizeUlasin {
 
 
 
-
-
-
-
             WebElement selectedValue = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-slot='innerWrapper']//span[@data-slot='value']")));
             Assertions.assertEquals("Müşteri", selectedValue.getText());
             System.out.println("Seçim doğrulandı: " + selectedValue.getText());
 
+
+            WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit'], input[type='submit']"));
+            submitButton.click();
 
         } catch (TimeoutException e) {
             System.out.println("Zaman aşımı hatası: " + e.getMessage());
