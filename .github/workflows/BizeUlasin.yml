@@ -43,7 +43,9 @@ jobs:
           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Run tests
-        run: mvn test
+        run: |
+          set -e
+          mvn test
 
       - name: Check Test Results
         if: failure()
