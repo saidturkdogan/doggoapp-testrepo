@@ -93,7 +93,7 @@ public class BizeUlasin {
 
 
             WebElement selectedValue = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-slot='innerWrapper']//span[@data-slot='value']")));
-            Assertions.assertEquals("Müşteri", selectedValue.getText());
+            Assertions.assertEquals("Müşterii", selectedValue.getText());
             System.out.println("Seçim doğrulandı: " + selectedValue.getText());
 
 
@@ -110,7 +110,7 @@ public class BizeUlasin {
     @AfterEach
     public void tearDown() {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 }
