@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -26,14 +25,12 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.5.0</version>
         </dependency>
-        <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.9</version>
         </dependency>
 
-        <!-- Logback Classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -52,15 +49,27 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.0</version> <!-- En son sürümü kontrol ederek ekleyin -->
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>2.22.2</version> <!-- Kullanmakta olduğunuz sürüm -->
+                <configuration>
+                    <forkCount>1</forkCount> <!-- Testlerin tek bir JVM'de çalıştığından emin olun -->
+                    <reuseForks>true</reuseForks> <!-- Fork reuse aktif -->
+                    <parallel>none</parallel>
+                </configuration>
             </plugin>
         </plugins>
     </build>
