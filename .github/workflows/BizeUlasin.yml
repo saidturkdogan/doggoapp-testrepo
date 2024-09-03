@@ -43,4 +43,17 @@ jobs:
           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Run tests
-        run: mvn test
+        run: |
+          set -e
+          mvn test
+
+      - name: Check Test Results
+        if: failure()
+        run: echo "Testler başarısız oldu!"
+        
+      - name: Archive JUnit test results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: junit-test-results
+          path: target/surefire-reports/*.xml
