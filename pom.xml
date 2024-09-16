@@ -57,6 +57,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>1.47.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -71,6 +77,7 @@
                     <parallel>none</parallel>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
